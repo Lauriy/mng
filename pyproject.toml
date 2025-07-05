@@ -1,0 +1,11 @@
+[project]
+name = "mng"
+version = "0.1.0"
+description = "My solutions for https://mng.quest"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.2",
+]

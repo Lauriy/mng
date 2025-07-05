@@ -1,0 +1,6 @@
+INIT | FIND | R
+FIND | FIND | R
+FIND + MOVE | R
+MOVE | MOVE | R
+MOVE _ BACK _ L
+BACK | HALT _ L
