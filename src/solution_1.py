@@ -1,3 +1,6 @@
+from pathlib import Path
+
+
 def solve():
     rules = [
         "INIT | FIND | R",  # Start moving right to find +
@@ -8,7 +11,9 @@ def solve():
         "BACK | HALT _ L",  # Remove last | and halt
     ]
 
-    with open("output/1.txt", "w") as f:
+    project_root = Path(__file__).parent.parent
+    machines_dir = project_root / "machines"
+    with open(machines_dir / "1.txt", "w") as f:
         for rule in rules:
             f.write(rule + "\n")
 

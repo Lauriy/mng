@@ -1,11 +1,16 @@
 [project]
 name = "mng"
-version = "0.1.0"
+version = "0.2.0"
 description = "My solutions for https://mng.quest"
 requires-python = ">=3.13"
 dependencies = []
 
 [dependency-groups]
 dev = [
+    "pytest>=8.4.1",
     "ruff>=0.12.2",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-s"]

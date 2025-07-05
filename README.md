@@ -1,5 +1,5 @@
 ```shell
-    uv sync
+    uv sync --dev
 ```
 
 ```shell
@@ -8,5 +8,13 @@
 ```
 
 ```shell
-    python 1.py
+    python src/solution_1.py
+```
+
+```shell
+    pytest
+```
+
+```shell
+    pytest -k test_1
 ```
