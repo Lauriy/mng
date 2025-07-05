@@ -8,6 +8,8 @@ MAX_STEPS = 1000000
 DIRECTION_LEFT = "L"
 DIRECTION_RIGHT = "R"
 
+BLANK_SPACE = "_"
+
 
 class TuringMachine:
     def __init__(self, rules, tape, start_state=STATE_INIT):
@@ -18,11 +20,11 @@ class TuringMachine:
         self.steps = 0
         self.max_steps = MAX_STEPS
 
-        while self.head < len(self.tape) and self.tape[self.head] == "_":
+        while self.head < len(self.tape) and self.tape[self.head] == BLANK_SPACE:
             self.head += 1
 
         if self.head >= len(self.tape):
-            self.tape.extend(["_"] * 10)
+            self.tape.extend([BLANK_SPACE] * 10)
 
     @staticmethod
     def read_rules_from_file(filename: str):
@@ -49,17 +51,17 @@ class TuringMachine:
 
     def _get_current_symbol(self):
         if self.head < 0 or self.head >= len(self.tape):
-            return "_"
+            return BLANK_SPACE
 
-        return self.tape[self.head] if self.tape[self.head] != "" else "_"
+        return self.tape[self.head] if self.tape[self.head] != "" else BLANK_SPACE
 
     def _write_symbol(self, symbol):
         while self.head < 0:
-            self.tape.insert(0, "_")
+            self.tape.insert(0, BLANK_SPACE)
             self.head += 1
 
         while self.head >= len(self.tape):
-            self.tape.extend(["_"] * 10)
+            self.tape.extend([BLANK_SPACE] * 10)
 
         self.tape[self.head] = symbol
 
@@ -70,7 +72,7 @@ class TuringMachine:
             self.head += 1
 
         if self.head >= len(self.tape):
-            self.tape.extend(["_"] * 10)
+            self.tape.extend([BLANK_SPACE] * 10)
 
     def run(self):
         while self.state != STATE_HALT and self.steps < self.max_steps:
@@ -92,6 +94,6 @@ class TuringMachine:
         return result
 
     def _get_result(self):
-        result = "".join(self.tape).rstrip("_")
+        result = "".join(self.tape).rstrip(BLANK_SPACE)
 
-        return result if result else "_"
+        return result if result else BLANK_SPACE
